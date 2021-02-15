@@ -317,6 +317,13 @@ def migrate_subreddit_17():
     MYDB.commit()
 
 
+def find_keys():
+    sql = "SELECT username, reddit_time FROM history WHERE action='create' AND comment_or_message='message'"
+    MYCURSOR.execute(sql)
+    res = MYCURSOR.fetchall()
+    for r in res:
+        print(r)
+
 # if __name__ == "__main__":
 #   add_subreddit("nano_tipper", True, None, "friendly")
 #   init_history()
